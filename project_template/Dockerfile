@@ -25,6 +25,7 @@ COPY poetry.lock pyproject.toml ./
 
 
 RUN poetry install --no-interaction --no-cache
+
 COPY . /app
 
 CMD ["tail", "-f", "/dev/null"]
