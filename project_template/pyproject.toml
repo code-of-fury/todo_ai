@@ -8,6 +8,7 @@ readme = "README.md"
 [tool.poetry.dependencies]
 python = "^3.13"
 pytest = "8.3.4"
+pytest-cov = "6.0.0"
 
 
 
@@ -18,11 +19,24 @@ build-backend = "poetry.core.masonry.api"
 
 [tool.pytest.ini_options]
 minversion = "6.0"
-addopts = "-ra -q"
 testpaths = [
     "tests",
+    "conftest",
 ]
 markers = [
     "slow: marks tests as slow (deselect with '-m \"not slow\"')",
     "smoke: business core tests",
+]
+addopts = [
+    "-ra -q",
+    "--cov=.",
+    "--cov-report",
+    "term-missing:skip-covered",
+    "--cov-fail-under=80"
+]
+
+[tool.coverage.run]
+omit = [
+    "*/tests/*.py",
+    "conftest/*"
 ]
