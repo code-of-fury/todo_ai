@@ -7,3 +7,5 @@
 
 envs/.env
 .coverage
+
+docs/build
